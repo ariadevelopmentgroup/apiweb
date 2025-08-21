@@ -1,11 +1,9 @@
 # APIWEB - API-ի և Webhook-ի հայտնաբերման գործիք
 ![JPG](https://www.verloop.io/wp-content/uploads/Webhook-or-API.jpg "APIWEB")
 
-## Առցանց Ստուգում - [API/Webhook Հայտնաբերման Գործիք](https://ariadevelopmentgroup.github.io/apiweb/ "APIWEB")
+## ✅ Ստուգել առցանց եղանակով - [API/Webhook Հայտնաբերման Գործիք](https://ariadevelopmentgroup.github.io/apiweb/ "APIWEB")
 
----
-
-## Ձեռքով Ստուգում
+## ✅ Ստուգել ձեռքով
 
 ### 🔍 API-ի հայտնաբերման մեթոդներ
 
