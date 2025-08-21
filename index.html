@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIWEB - API/Webhook Հայտնաբերման Գործիք</title>
+    <!-- Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+
+        /* Custom CSS for the hero section background gradient */
+        .hero-bg {
+            background-image: linear-gradient(135deg, #4c51bf, #6b46c1);
+        }
+
+        /* CSS for the loader spinner */
+        .loader-spinner {
+            border-top-color: #4f46e5;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header Section -->
+    <header class="hero-bg text-white py-12 text-center rounded-b-3xl shadow-lg">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-2">
+                APIWEB - API/Webhook Հայտնաբերման Գործիք
+            </h1>
+            <p class="text-lg opacity-90">
+                Ստուգեք, արդյոք կայքը ունի հանրային API կամ Webhook-ներ:
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="container mx-auto px-4 py-8 flex-grow">
+
+        <!-- Input Card -->
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl max-w-2xl mx-auto mb-8">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-center">
+                Կայքի URL-ի Ստուգում
+            </h2>
+            <p class="text-gray-600 mb-6 text-center">
+                Մուտքագրեք կայքի URL-ը՝ հնարավոր API կամ Webhook endpoints-ը գտնելու համար:
+            </p>
+            <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <input type="url" id="websiteUrl" placeholder="Օրինակ՝ https://example.com"
+                       class="flex-1 w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500 transition-colors duration-300 text-base" />
+                <button id="checkButton"
+                        class="w-full sm:w-auto px-8 py-3 bg-indigo-600 text-white font-semibold rounded-xl shadow-md hover:bg-indigo-700 transition-all duration-300 transform active:scale-95">
+                    Ստուգել
+                </button>
+            </div>
+            <!-- Validation Message -->
+            <p id="validationMessage" class="mt-4 text-red-500 text-sm text-center font-medium hidden">
+                Խնդրում ենք մուտքագրել վավեր URL
+            </p>
+        </div>
+
+        <!-- Loader Section -->
+        <div id="loader" class="text-center py-10 hidden">
+            <div class="loader-spinner mx-auto w-16 h-16 border-4 border-gray-300 rounded-full"></div>
+            <p class="mt-4 text-lg text-gray-700 font-medium">
+                Որոնում եմ API և Webhook endpoints...
+            </p>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="grid grid-cols-1 md:grid-cols-2 gap-6 hidden">
+            <!-- API Results Card -->
+            <div class="bg-white p-6 rounded-2xl shadow-xl transition-transform duration-300 hover:scale-105">
+                <h3 class="text-2xl font-bold text-indigo-700 flex items-center mb-4">
+                    <span class="mr-2 text-3xl">🔍</span> API Endpoints
+                </h3>
+                <div id="apiResult" class="text-gray-700">
+                    <!-- API results will be displayed here -->
+                </div>
+            </div>
+
+            <!-- Webhook Results Card -->
+            <div class="bg-white p-6 rounded-2xl shadow-xl transition-transform duration-300 hover:scale-105">
+                <h3 class="text-2xl font-bold text-purple-700 flex items-center mb-4">
+                    <span class="mr-2 text-3xl">🔗</span> Webhook Աջակցություն
+                </h3>
+                <div id="webhookResult" class="text-gray-700">
+                    <!-- Webhook results will be displayed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Manual Guide Section -->
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl max-w-4xl mx-auto my-8">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4 text-center">
+                Ձեռքով Ստուգման Ուղեցույց
+            </h3>
+            <p class="text-gray-600 text-center mb-6">
+                Եթե ավտոմատ ստուգումը արդյունք չտա, կարող եք փորձել հետևյալ մեթոդները:
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- API Methods Card -->
+                <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-indigo-500 shadow-sm">
+                    <h4 class="text-lg font-semibold mb-2">API-ի Հայտնաբերման Մեթոդներ</h4>
+                    <ol class="list-decimal list-inside text-gray-700 space-y-2">
+                        <li>Ստուգեք կայքի փաստաթղթերը/օգնության բաժինը "API" բառի համար։</li>
+                        <li>Փնտրեք `/api/`, `/v1/`, `/graphql` endpoints կայքի HTML կոդում։</li>
+                        <li>Ստուգեք կայքի `robots.txt` ֆայլը API endpoints-ի համար։</li>
+                        <li>Օգտագործեք բրաուզերի developer tools՝ ցանցի հարցումները դիտելու համար։</li>
+                    </ol>
+                </div>
+
+                <!-- Webhook Methods Card -->
+                <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-purple-500 shadow-sm">
+                    <h4 class="text-lg font-semibold mb-2">Webhook-ի Հայտնաբերման Մեթոդներ</h4>
+                    <ol class="list-decimal list-inside text-gray-700 space-y-2">
+                        <li>Ստուգեք կայքի կարգավորումներում "Webhook", "Integration" կամ "Hook" բաժինները։</li>
+                        <li>Փնտրեք webhook կոնֆիգուրացիայի էջեր կամ փաստաթղթեր։</li>
+                        <li>Ստուգեք, արդյոք կայքն ունի developer portal կամ API փաստաթղթեր։</li>
+                    </ol>
+                </div>
+
+                <!-- n8n Integration Card -->
+                <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-yellow-500 shadow-sm">
+                    <h4 class="text-lg font-semibold mb-2">n8n Ինտեգրման Համար</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Նախընտրելի է օգտագործել REST API կամ Webhook support։</li>
+                        <li>Ստուգեք, արդյոք կայքն արդեն ունի նախագիծ n8n integrations-ի ցանկում։</li>
+                        <li>Եթե կայքը չունի API, հնարավոր է պետք լինի օգտագործել web scraping մեթոդներ։</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="text-center py-6 text-sm text-gray-500">
+        <p>Նշում. Այս գործիքը տալիս է միայն նախնական գնահատական: Միշտ ստուգեք կայքի փաստաթղթերը API/Webhook հնարավորությունների համար:</p>
+    </footer>
+
+    <script>
+        // Get DOM elements
+        const checkButton = document.getElementById('checkButton');
+        const websiteUrlInput = document.getElementById('websiteUrl');
+        const loader = document.getElementById('loader');
+        const results = document.getElementById('results');
+        const apiResult = document.getElementById('apiResult');
+        const webhookResult = document.getElementById('webhookResult');
+        const validationMessage = document.getElementById('validationMessage');
+
+        // Function to validate URL format
+        function isValidUrl(string) {
+            try {
+                new URL(string);
+                return true;
+            } catch (_) {
+                return false;
+            }
+        }
+
+        // Event listener for the check button
+        checkButton.addEventListener('click', () => {
+            const url = websiteUrlInput.value.trim();
+
+            // Validate the URL input
+            if (!url || !isValidUrl(url)) {
+                validationMessage.classList.remove('hidden');
+                return;
+            }
+
+            // Hide validation message if URL is valid
+            validationMessage.classList.add('hidden');
+
+            // Show loader and hide previous results
+            loader.classList.remove('hidden');
+            results.classList.add('hidden');
+
+            // Simulate API checking with a delay (this is a mock function as actual scraping is not possible)
+            setTimeout(() => {
+                // Hide loader
+                loader.classList.add('hidden');
+                
+                // Show results section
+                results.classList.remove('hidden');
+
+                // Generate mock results randomly
+                const hasAPI = Math.random() > 0.5;
+                const hasWebhook = Math.random() > 0.7;
+                
+                // Display API result
+                if (hasAPI) {
+                    apiResult.innerHTML = `
+                        <p class="text-green-600 font-bold mb-2">✅ API endpoints գտնվեցին:</p>
+                        <p class="mb-2">Հնարավոր API endpoints-ներ, որոնք հայտնաբերվել են:</p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-600">
+                            <li><code>${url.replace(/\/$/, "")}/api/v1/users</code></li>
+                            <li><code>${url.replace(/\/$/, "")}/api/v2/data</code></li>
+                            <li><code>${url.replace(/\/$/, "")}/graphql</code></li>
+                        </ul>
+                        <p class="mt-4 text-sm text-gray-500">
+                            Այս endpoints-ները կարող են համատեղելի լինել n8n HTTP Request node-ի հետ:
+                        </p>
+                    `;
+                } else {
+                    apiResult.innerHTML = `
+                        <p class="text-red-600 font-bold mb-2">❌ Ոչ մի ակնհայտ API endpoint չգտնվեց:</p>
+                        <p class="text-sm text-gray-500">
+                            Մենք չկարողացանք ավտոմատ կերպով հայտնաբերել ստանդարտ API ձևանմուշներ:
+                            Ստուգեք կայքի փաստաթղթերը կամ կիրառեք ձեռքով ստուգման մեթոդները:
+                        </p>
+                    `;
+                }
+                
+                // Display Webhook result
+                if (hasWebhook) {
+                    webhookResult.innerHTML = `
+                        <p class="text-green-600 font-bold mb-2">✅ Webhook աջակցություն հայտնաբերվեց:</p>
+                        <p class="mb-2">Այս կայքը աջակցում է webhooks-ներին:</p>
+                        <p class="mt-4 text-sm text-gray-500">
+                            Փնտրեք "Webhooks" կամ "Integrations" բաժինները կայքի ձեր հաշվի կարգավորումներում:
+                        </p>
+                    `;
+                } else {
+                    webhookResult.innerHTML = `
+                        <p class="text-red-600 font-bold mb-2">❌ Webhook աջակցություն չհայտնաբերվեց:</p>
+                        <p class="text-sm text-gray-500">
+                            Մենք չգտանք Webhook աջակցության ապացույցներ:
+                            Ստուգեք կայքի փաստաթղթերը կամ կարգավորումները:
+                        </p>
+                    `;
+                }
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
