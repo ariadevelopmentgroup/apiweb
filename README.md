@@ -1,5 +1,5 @@
 # APIWEB - API-ի և Webhook-ի հայտնաբերման գործիք
-![JPG](https://www.verloop.io/wp-content/uploads/Webhook-or-API.jpg target="_blank" "APIWEB")
+![JPG](https://www.verloop.io/wp-content/uploads/Webhook-or-API.jpg "APIWEB")
 
 ## Առցանց Ստուգում - [API/Webhook Հայտնաբերման Գործիք](https://ariadevelopmentgroup.github.io/apiweb/ "APIWEB")
 
