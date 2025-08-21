@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APIWEB - API/Webhook Հայտնաբերման Գործիք</title>
+    <title>APIWEB - API-ի և Webhook-ի Հայտնաբերման Գործիք</title>
     <!-- Inter font from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,10 +40,10 @@
     <header class="hero-bg text-white py-12 text-center rounded-b-3xl shadow-lg">
         <div class="container mx-auto px-4">
             <h1 class="text-4xl md:text-5xl font-bold mb-2">
-                APIWEB - API/Webhook Հայտնաբերման Գործիք
+                APIWEB - API-ի և Webhook-ի Հայտնաբերման Գործիք
             </h1>
             <p class="text-lg opacity-90">
-                Ստուգեք, արդյոք կայքը ունի հանրային API կամ Webhook-ներ:
+                Ստուգեք, արդյոք կայքը ունի հանրային API-ներ կամ Webhook-ներ:
             </p>
         </div>
     </header>
@@ -69,7 +69,7 @@
             </div>
             <!-- Validation Message -->
             <p id="validationMessage" class="mt-4 text-red-500 text-sm text-center font-medium hidden">
-                Խնդրում ենք մուտքագրել վավեր URL
+                Խնդրում ենք մուտքագրել վավեր URL հասցեն հետևյալ ձևաչափով` http:// կամ https://
             </p>
         </div>
 
@@ -77,7 +77,7 @@
         <div id="loader" class="text-center py-10 hidden">
             <div class="loader-spinner mx-auto w-16 h-16 border-4 border-gray-300 rounded-full"></div>
             <p class="mt-4 text-lg text-gray-700 font-medium">
-                Որոնում եմ API և Webhook endpoints...
+                Որոնում եմ API և Webhook Endpoint-ներ
             </p>
         </div>
 
@@ -206,20 +206,20 @@
                 // Display API result
                 if (hasAPI) {
                     apiResult.innerHTML = `
-                        <p class="text-green-600 font-bold mb-2">✅ API endpoints գտնվեցին:</p>
-                        <p class="mb-2">Հնարավոր API endpoints-ներ, որոնք հայտնաբերվել են:</p>
+                        <p class="text-green-600 font-bold mb-2">✅ API Endpoint-ներ գտնվեցին:</p>
+                        <p class="mb-2">Հնարավոր API Endpoint-ներ, որոնք հայտնաբերվել են:</p>
                         <ul class="list-disc list-inside space-y-1 text-gray-600">
                             <li><code>${url.replace(/\/$/, "")}/api/v1/users</code></li>
                             <li><code>${url.replace(/\/$/, "")}/api/v2/data</code></li>
                             <li><code>${url.replace(/\/$/, "")}/graphql</code></li>
                         </ul>
                         <p class="mt-4 text-sm text-gray-500">
-                            Այս endpoints-ները կարող են համատեղելի լինել n8n HTTP Request node-ի հետ:
+                            Այս Endpoint-ները կարող են համատեղելի լինել n8n HTTP Request Node-ի հետ:
                         </p>
                     `;
                 } else {
                     apiResult.innerHTML = `
-                        <p class="text-red-600 font-bold mb-2">❌ Ոչ մի ակնհայտ API endpoint չգտնվեց:</p>
+                        <p class="text-red-600 font-bold mb-2">❌ Ոչ մի ակնհայտ API Endpoint չգտնվեց:</p>
                         <p class="text-sm text-gray-500">
                             Մենք չկարողացանք ավտոմատ կերպով հայտնաբերել ստանդարտ API ձևանմուշներ:
                             Ստուգեք կայքի փաստաթղթերը կամ կիրառեք ձեռքով ստուգման մեթոդները:
@@ -231,7 +231,7 @@
                 if (hasWebhook) {
                     webhookResult.innerHTML = `
                         <p class="text-green-600 font-bold mb-2">✅ Webhook աջակցություն հայտնաբերվեց:</p>
-                        <p class="mb-2">Այս կայքը աջակցում է webhooks-ներին:</p>
+                        <p class="mb-2">Այս կայքը աջակցում է Webhook-ներին:</p>
                         <p class="mt-4 text-sm text-gray-500">
                             Փնտրեք "Webhooks" կամ "Integrations" բաժինները կայքի ձեր հաշվի կարգավորումներում:
                         </p>
