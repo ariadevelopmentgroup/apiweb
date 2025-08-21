@@ -1,7 +1,7 @@
 # APIWEB - API-ի և Webhook-ի առցանց հայտնաբերման գործիք
 ![JPG](https://www.verloop.io/wp-content/uploads/Webhook-or-API.jpg "APIWEB")
 
-## ✅ Ստուգել առցանց եղանակով - [APIWEB](https://ariadevelopmentgroup.github.io/apiweb/ "APIWEB")
+## ✅ Ստուգել առցանց եղանակով - [APIWEB](https://ariadevelopmentgroup.github.io/apiweb/)
 
 ## ✅ Ստուգել ձեռքով
 
